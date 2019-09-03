@@ -23,8 +23,9 @@ function clientConfig(env) {
 	if (!isProd) {
 		entry.bundle = [
 			entry.bundle,
-			'webpack-dev-server/client',
-			'webpack/hot/dev-server'
+			'webpack/hot/poll?2000'
+			// 'webpack-dev-server/client',
+			// 'webpack/hot/dev-server'
 		];
 	}
 
@@ -169,6 +170,9 @@ function isProd(config) {
 
 function isDev(config) {
 	const { cwd, src } = config;
+	const pollInterval = config.pollInterval || 2000;
+	console.log('============================', pool);
+
 
 	return {
 		plugins: [
@@ -177,8 +181,9 @@ function isDev(config) {
 		],
 
 		devServer: {
-			inline: true,
-			hot:true,
+			inline: false,
+			hot:false,
+			lazy: false,
 			compress: true,
 			publicPath: '/',
 			contentBase: src,
@@ -195,6 +200,8 @@ function isDev(config) {
 			overlay: false,
 			stats: 'minimal',
 			watchOptions: {
+				poll: pollInterval,
+            	aggregateTimeout: 600,
 				ignored: [
 					resolve(cwd, 'build'),
 					resolve(cwd, 'node_modules')

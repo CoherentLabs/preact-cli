@@ -36,12 +36,24 @@ export default asyncCommand({
 			description: 'Pre-render static app content on initial build',
 			default: false
 		},
+		// prerender: {
+		// 	description: 'Pre-render static app content.',
+		// 	default: true
+		// },
+		// prerenderUrls: {
+		// 	description: 'Path to pre-render routes configuration.',
+		// 	default: 'prerender-urls.json'
+		// },
 		template: {
 			description: 'HTML template used by webpack'
 		},
 		config: {
 			description: 'Path to custom preact.config.js',
 			alias: 'c'
+		},
+		pollInterval: {
+			description: 'The interval between the webserver to poll for changes',
+			alias: 'pi'
 		}
 	},
 

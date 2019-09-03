@@ -33,7 +33,8 @@ export default function (env) {
 	env.pkg = readJson( resolve(cwd, 'package.json') ) || {};
 
 	let babelrc = readJson( resolve(cwd, '.babelrc') ) || {};
-	let browsers = env.pkg.browserslist || ['> 1%', 'last 2 versions', 'IE >= 9'];
+	let browsersJS = env.pkg.browserslist || ['> 1%', 'last 2 versions', 'IE >= 9'];;
+	let browsersStyles = ['chrome > 68'];
 
 	let nodeModules = resolve(cwd, 'node_modules');
 
@@ -76,7 +77,7 @@ export default function (env) {
 					test: /\.jsx?$/,
 					loader: 'babel-loader',
 					options: Object.assign(
-						createBabelConfig(env, { browsers }),
+						createBabelConfig(env, { browsersJS }),
 						babelrc // intentionally overwrite our settings
 					)
 				},
@@ -138,10 +139,18 @@ export default function (env) {
 						source('routes')
 					],
 					loader: ExtractTextPlugin.extract({
-						fallback: 'style-loader',
+						fallback: {
+							loader: 'style-loader',
+							options: {
+								injectType: 'linkTag',
+								attributes: {
+									type: 'text/css'
+								}
+							}
+						},
 						use: [
 							{
-								loader: 'css-loader',
+								loader: 'file-loader',
 								options: {
 									modules: true,
 									localIdentName: '[local]__[hash:base64:5]',
@@ -154,7 +163,7 @@ export default function (env) {
 								options: {
 									ident: 'postcss',
 									sourceMap: true,
-									plugins: [autoprefixer({ browsers })]
+									// plugins: [autoprefixer({ browsersStyles })]
 								}
 							}
 						]
@@ -167,10 +176,18 @@ export default function (env) {
 						source('routes')
 					],
 					loader: ExtractTextPlugin.extract({
-						fallback: 'style-loader',
+						fallback: {
+							loader: 'style-loader',
+							options: {
+								injectType: 'linkTag',
+								attributes: {
+									type: 'text/css'
+								}
+							}
+						},
 						use: [
 							{
-								loader: 'css-loader',
+								loader: 'file-loader',
 								options: {
 									sourceMap: isProd
 								}
@@ -180,7 +197,7 @@ export default function (env) {
 								options: {
 									ident: 'postcss',
 									sourceMap: true,
-									plugins: [autoprefixer({ browsers })]
+									// plugins: [autoprefixer({ browsersStyles })]
 								}
 							}
 						]
@@ -208,7 +225,8 @@ export default function (env) {
 			}),
 			// Extract CSS
 			new ExtractTextPlugin({
-				filename: isProd ? 'style.[contenthash:5].css' : 'style.css',
+				// filename: isProd ? 'style.[contenthash:5].css' : 'style.css',
+				filename: 'style.css',
 				disable: !isProd,
 				allChunks: true
 			}),

@@ -1,11 +1,11 @@
 {
-  "name": "preact-cli",
-  "version": "2.2.1",
+  "name": "coherent-preact-cli",
+  "version": "1.0.0",
   "description": "Start building a Preact Progressive Web App in seconds.",
   "repository": "developit/preact-cli",
   "main": "lib/index.js",
   "bin": {
-    "preact": "./lib/index.js"
+    "coherent-preact-cli": "./lib/index.js"
   },
   "scripts": {
     "prebuild": "rimraf lib",
@@ -150,7 +150,7 @@
     "simplehttp2server": "^2.0.0",
     "source-map": "^0.5.6",
     "stack-trace": "0.0.10",
-    "style-loader": "^0.18.2",
+    "style-loader": "1.0.0",
     "sw-precache-webpack-plugin": "^0.11.2",
     "tmp": "0.0.31",
     "unfetch": "^3.0.0",
