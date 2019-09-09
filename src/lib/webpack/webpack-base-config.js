@@ -33,8 +33,7 @@ export default function (env) {
 	env.pkg = readJson( resolve(cwd, 'package.json') ) || {};
 
 	let babelrc = readJson( resolve(cwd, '.babelrc') ) || {};
-	let browsersJS = env.pkg.browserslist || ['> 1%', 'last 2 versions', 'IE >= 9'];;
-	let browsersStyles = ['chrome > 68'];
+	let browsersJS = env.pkg.browserslist || ['> 1%', 'last 2 versions', 'IE >= 9'];
 
 	let nodeModules = resolve(cwd, 'node_modules');
 
@@ -163,7 +162,7 @@ export default function (env) {
 								options: {
 									ident: 'postcss',
 									sourceMap: true,
-									// plugins: [autoprefixer({ browsersStyles })]
+									plugins: [autoprefixer({ add: false })]
 								}
 							}
 						]
@@ -197,7 +196,7 @@ export default function (env) {
 								options: {
 									ident: 'postcss',
 									sourceMap: true,
-									// plugins: [autoprefixer({ browsersStyles })]
+									plugins: [autoprefixer({ add: false })]
 								}
 							}
 						]

@@ -171,8 +171,6 @@ function isProd(config) {
 function isDev(config) {
 	const { cwd, src } = config;
 	const pollInterval = config.pollInterval || 2000;
-	console.log('============================', pool);
-
 
 	return {
 		plugins: [
