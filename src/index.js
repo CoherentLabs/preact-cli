@@ -26,7 +26,7 @@ yargs
 	.command(watch)
 	.command(serve)
 	.command(list)
-	.usage(logo(`\n\npreact-cli ${pkg.version}`) + `\nFor help with a specific command, enter:\n  preact help [command]`)
+	.usage(logo(`\n\ncoherent-preact ${pkg.version}`) + `\nFor help with a specific command, enter:\n  coherent-preact help [command]`)
 	.help()
 	.alias('h', 'help')
 	.demandCommand()
