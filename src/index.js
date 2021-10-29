@@ -5,7 +5,6 @@ import yargs from 'yargs';
 import create from './commands/create';
 import build from './commands/build';
 import watch from './commands/watch';
-import serve from './commands/serve';
 import list from './commands/list';
 import installHooks from './lib/output-hooks';
 import pkg from '../package.json';
@@ -24,7 +23,6 @@ yargs
 	.command(create)
 	.command(build)
 	.command(watch)
-	.command(serve)
 	.command(list)
 	.usage(logo(`\n\ncoherent-preact ${pkg.version}`) + `\nFor help with a specific command, enter:\n  coherent-preact help [command]`)
 	.help()

@@ -113,22 +113,6 @@ Note:
 1. You can run dev server using `HTTPS` then you can use the following `HTTPS=true preact watch`
 2. You can run the dev server on a different port using `PORT=8091 preact watch`
 
-#### preact serve
-
-Start a production version development server
-
-```sh
-$ preact serve
-
-  --cwd       A directory to use instead of $PWD.                             [string]  [default: .]
-  --dir       Directory root to serve static files from.                      [string]  [default: "build"]
-  --server    Which server to run, or "config" to produce a firebase config.
-              [options: "simplehttp2server", "superstatic", "config"]         [string]  [default: "simplehttp2server"]
-  --dest      Directory or filename where firebase.json should be written
-              (used for --server config)                                      [string]  [default: -]
-  --port, -p  Port to start a server on.                                      [string]  [default: PORT || 8080]
-```
-
 #### preact list
 
 Lists all the official preactjs-cli repositories
