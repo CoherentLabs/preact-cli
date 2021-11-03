@@ -212,8 +212,6 @@ export default asyncCommand({
 			To create a production build (in ./build):
 			  ${ green(pfx + ' build') }
 
-			To start a production HTTP/2 server:
-			  ${ green(pfx + ' serve') }
 		`) + '\n';
 	}
 });
